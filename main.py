@@ -14,9 +14,6 @@ class bcolors:
     UNDERLINE = '\033[4m'
     YELLOW = '\033[33m'
 
-
-
-
 """
 # Create SSH key
 ssh-keygen -t ed25519 -C "your_email@example.com"
@@ -33,9 +30,6 @@ cat ~/.ssh/id_ed25519.pub
 # Test connection to GitHub
 ssh -T git@github.com
 """
-
-
-
 def verifyLevel(limit,whitelist,root_path,assetList):
     # Loop over assets in the root folder
     print(bcolors.OKGREEN+f"looking at  {root_path}"+bcolors.ENDC)
@@ -68,44 +62,37 @@ def verifyLevel(limit,whitelist,root_path,assetList):
     print('')
 
 
-# Define the pattern
-pattern = "I:/intermarche/03_Production/Assets/Props/*/Export/*"
-
-# Find and print all matching paths
-for path in glob.glob(pattern, recursive=True):
-    print(path)
-
-# propsRootPath = r"I:\intermarche\03_Production\Assets\Props"
-# propsList=os.listdir(propsRootPath)
-
-# envRootPath = r"I:\intermarche\03_Production\Assets\Environment"
-# envList=os.listdir(envRootPath)
-
-# setsRootPath = r"I:\intermarche\03_Production\Assets\Sets"
-# setsList=os.listdir(setsRootPath)
-
-# charsRootPath = r"I:\intermarche\03_Production\Assets\Characters"
-# charsList=os.listdir(charsRootPath)
-# charsList.remove('wolf')
 
 
-# whitelistProps = {"Rigging", "USD", "Modeling","toRig","toSubstance","old","Sculpt","products.json","Rigging","_layer_shd_master"}  # <- Replace with your whitelist
-# verifyLevel(10,whitelistProps,propsRootPath,propsList)
-# whitelistEnv = {"_layer_mod_master", "USD", "extraPublish","_layer_mod_mayaLayout","old","products.json"}
-# verifyLevel(10,whitelistEnv,envRootPath,envList)
-# verifyLevel(10,whitelistProps,setsRootPath,setsList)
-# whitelistchar = {"_layer_mod_master","FromMeshAI","_layer_shd_master","extraPublish", "Rigging","toRig","USD","old","products.json","_layer_cfx_groom","_layer_cfx_master","_layer_cfx_groomShading","toRig","toSubstance"}
-# verifyLevel(10,whitelistchar,charsRootPath,charsList)
+propsRootPath = r"I:\intermarche\03_Production\Assets\Props"
+propsList=os.listdir(propsRootPath)
 
+envRootPath = r"I:\intermarche\03_Production\Assets\Environment"
+envList=os.listdir(envRootPath)
 
-# sequencesRootPath = r"I:\intermarche\03_Production\Shots"
-# sequences=os.listdir(sequencesRootPath)
-# sequences.remove('testShot')
-# whitelistShots = {"_layer_Anim_master","_layer_lgt_lightingHoudini","_layer_lgt_master","_layer_lay_camera","_layer_lay_main","_layer_lay_master","_layer_Lighting_master","_layer_FX_master","USD","old","products.json","cameraToAnim","layoutExtraPublish"}
+setsRootPath = r"I:\intermarche\03_Production\Assets\Sets"
+setsList=os.listdir(setsRootPath)
 
-# for sequence in sequences:
-#     shotRootPath=os.path.join(sequencesRootPath,sequence)
-#     shotList=os.listdir(shotRootPath)
-#     if '_sequence' in shotList:
-#         shotList.remove('_sequence')
-#     verifyLevel(10,whitelistShots,shotRootPath,shotList)
+charsRootPath = r"I:\intermarche\03_Production\Assets\Characters"
+charsList=os.listdir(charsRootPath)
+charsList.remove('wolf')
+
+whitelistProps = {"Rigging", "USD", "Modeling","toRig","toSubstance","old","Sculpt","products.json","Rigging","_layer_shd_master"}  # <- Replace with your whitelist
+verifyLevel(10,whitelistProps,propsRootPath,propsList)
+whitelistEnv = {"_layer_mod_master", "USD", "extraPublish","_layer_mod_mayaLayout","old","products.json"}
+verifyLevel(10,whitelistEnv,envRootPath,envList)
+verifyLevel(10,whitelistProps,setsRootPath,setsList)
+whitelistchar = {"_layer_mod_master","FromMeshAI","_layer_shd_master","extraPublish", "Rigging","toRig","USD","old","products.json","_layer_cfx_groom","_layer_cfx_master","_layer_cfx_groomShading","toRig","toSubstance"}
+verifyLevel(10,whitelistchar,charsRootPath,charsList)
+
+sequencesRootPath = r"I:\intermarche\03_Production\Shots"
+sequences=os.listdir(sequencesRootPath)
+sequences.remove('testShot')
+whitelistShots = {"_layer_Anim_master","_layer_lgt_lightingHoudini","_layer_lgt_master","_layer_lay_camera","_layer_lay_main","_layer_lay_master","_layer_Lighting_master","_layer_FX_master","USD","old","products.json","cameraToAnim","layoutExtraPublish"}
+
+for sequence in sequences:
+    shotRootPath=os.path.join(sequencesRootPath,sequence)
+    shotList=os.listdir(shotRootPath)
+    if '_sequence' in shotList:
+        shotList.remove('_sequence')
+    verifyLevel(10,whitelistShots,shotRootPath,shotList)
